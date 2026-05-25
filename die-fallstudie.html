@@ -1,0 +1,1236 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/de-pam-aspnet-juin-2010/die-fallstudie.html">
+      
+      
+        <link rel="prev" href="eine-kurze-einfuhrung-in-aspnet.html">
+      
+      
+        <link rel="next" href="die-anwendung-simupaie---version-1---aspnet.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>3. Die Fallstudie - Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-die-fallstudie" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate" class="md-header__button md-logo" aria-label="Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. Die Fallstudie
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum dunklen Modus wechseln"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Zum dunklen Modus wechseln" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum hellen Modus wechseln"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Zum hellen Modus wechseln" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/de-pam-aspnet-juin-2010" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate" class="md-nav__button md-logo" aria-label="Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Erstellung einer dreistufigen Webanwendung mit ASP.NET 2.0, C#, Spring.Net und NHibernate
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/de-pam-aspnet-juin-2010" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Willkommen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="einfuhrung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Einführung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="eine-kurze-einfuhrung-in-aspnet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Eine kurze Einführung in ASP.NET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Die Fallstudie
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="die-fallstudie.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Die Fallstudie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-die-datenbank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Die Datenbank
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-berechnungsmethode-fur-das-gehalt-einer-tagesmutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Berechnungsmethode für das Gehalt einer Tagesmutter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-adonet-hinweise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. ADO.NET-Hinweise
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-anwendung-simupaie---version-1---aspnet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Die Anwendung [SimuPaie] – Version 1 – ASP.NET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-anwendung-simupaie---version-2---ajax--aspnet--.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Die Anwendung [SimuPaie] – Version 2 – AJAX / ASP.NET- 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="einfuhrung-in-das-nhibernate-orm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Einführung in das NHibernate-ORM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-anwendung-simupaie-----version-3---3-tier-architektur-mit-nhibernate.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Die Anwendung [SimuPaie] – „ “ Version 3 – 3-Tier-Architektur mit NHibernate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-simupaie-anwendung---version-4---aspnet--multi-view--single-page.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Die [SimuPaie]-Anwendung – Version 4 – ASP.NET / Multi-View / Single-Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-simupaie-anwendung---version-5---aspnet--webdienst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Die [SimuPaie]-Anwendung – Version 5 – ASP.NET / Webdienst
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-anwendung-simupaie---version-6---ein-aspnet-client-eines-webdienstes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Die Anwendung [SimuPaie] – Version 6 – ein ASP.NET-Client eines Webdienstes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-anwendung-simupaie---version-7---aspnet--multi-view--multi-page.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Die Anwendung [SimuPaie] – Version 7 – ASP.NET / Multi-View / Multi-Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-anwendung-simupaie---version-8---ein-aspnet-client-eines-webdienstes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Die Anwendung [SimuPaie] – Version 8 – ein ASP.NET-Client eines Webdienstes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-simupaie-anwendung---version-9---springnhibernate-integration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Die [SimuPaie]-Anwendung – Version 9 – Spring/NHibernate-Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="die-anwendung-simupaie---version-10---ein-flex-client-fur-einen-aspnet-webdienst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Die Anwendung [SimuPaie] – Version 10 – ein Flex-Client für einen ASP.NET-Webdienst
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a id="etude-de-cas"></a></p>
+<h1 id="3-die-fallstudie">3. <span style="color: #365f91"><strong><span style="color: #365f91">Die Fallstudie</span></strong></span></h1>
+<p>Wir möchten eine .NET-Anwendung entwickeln, mit der ein Benutzer die Lohnabrechnung für Kinderbetreuer beim Verein „Maison de la petite enfance“ in einer Gemeinde simulieren kann. Wir werden uns ebenso sehr auf die Organisation des .NET-Codes der Anwendung konzentrieren wie auf den Code selbst.</p>
+<p><a id="refheadingtoc744714255346799"></a>
+<a id="bd"></a></p>
+<h2 id="31-die-datenbank">3.1. <span style="color: #4f81bd"><strong>Die Datenbank</strong></span></h2>
+<p>Die zur Erstellung der Gehaltsabrechnung benötigten statischen Daten sind in einer SQL Server Express-Datenbank namens <strong>dbpam</strong> (pam = Paie Assistante Maternelle) gespeichert. Diese Datenbank hat einen Administrator namens <strong>sa</strong> mit dem Passwort <strong>msde</strong>.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000BB000000B34902BDD9.png" width="150" height="143" style="display:inline-block; margin:4px;width:3.96cm;height:3.791cm;" class="odt-zoomable" data-zoom-src="images/10000000000000BB000000B34902BDD9.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Die Datenbank enthält drei Tabellen: <strong>EMPLOYEES, CONTRIBUTIONS</strong> und <strong>ALLOWANCES</strong> mit folgender Struktur:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">Table <span style="font-weight:bold">EMPLOYES</span> : rassemble des informations sur les différentes assistantes maternelles</span></span>
+</code></pre></div>
+
+<p><strong>Struktur</strong>:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000C80000009466CD2327.png" width="160" height="118" style="display:inline-block; margin:4px;width:4.23cm;height:3.129cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C80000009466CD2327.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SS
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Sozialversicherungsnummer des Mitarbeiters – Primärschlüssel</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>NAME
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Nachname des Mitarbeiters</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Vorname
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Vorname</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ADRESSE
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ihre Adresse</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>STADT
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">seine/ihre Stadt</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>POSTLEITZAHL
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">seine/ihre Postleitzahl</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>INDEX
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">sein Verarbeitungsindex – Fremdschlüssel auf dem Feld [INDICE] der Tabelle [INDEMNITES]</div></td></tr></table></td></tr></table>
+
+<p>Der Inhalt könnte wie folgt lauten:</p>
+<p><img src="images/10000000000001EB0000003DA63DA382.png" width="393" height="49" style="width:10.389cm;height:1.291cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001EB0000003DA63DA382.png" /></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">Table <span style="font-weight:bold">COTISATIONS</span> : rassemble les taux des cotisations sociales prélevées sur le salaire</span></span>
+</code></pre></div>
+
+<p><strong>Aufbau</strong>:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000007C600000200975BAB44.png" width="680" height="175" style="display:inline-block; margin:4px;width:17.997cm;height:4.63cm;" class="odt-zoomable" data-zoom-src="images/10000000000007C600000200975BAB44.png" /></td></tr></table>
+
+<p>Der Inhalt könnte wie folgt lauten:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000001690000002C2FBA0563.png" width="289" height="35" style="display:inline-block; margin:4px;width:7.639cm;height:0.931cm;" class="odt-zoomable" data-zoom-src="images/10000000000001690000002C2FBA0563.png" /></td></tr></table>
+
+<p>Die Sozialversicherungsbeiträge sind unabhängig vom Arbeitnehmer. Die vorstehende Tabelle enthält nur eine Zeile.</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">Table <span style="font-weight:bold">INDEMNITES</span> : rassemble les différentes indemnités dépendant de l&#x27;indice de l&#x27;employé</span></span>
+</code></pre></div>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000000C900000076FBDB18D6.png" width="161" height="94" style="display:inline-block; margin:4px;width:4.249cm;height:2.494cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C900000076FBDB18D6.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>INDEX
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Gehaltsindex – Primärschlüssel</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>BASEHOUR
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Nettostundensatz in Euro</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>TÄGLICHE WARTUNG
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Tagespauschale in Euro pro Tag Bereitschaftsdienst</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>VERPFLEGUNG PRO TAG
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Verpflegungszulage in Euro pro Pflegetag</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>URLAUBSGELD
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Bezahlter Urlaubsgeldzuschlag. Dies ist ein Prozentsatz, der auf das Grundgehalt angewendet wird.</div></td></tr></table></td></tr></table>
+
+<p>Der Inhalt könnte wie folgt lauten:</p>
+<p><img src="images/100000000000017600000040A8082BF8.png" width="299" height="51" style="width:7.92cm;height:1.355cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000017600000040A8082BF8.png" /></p>
+<p>Beachten Sie, dass die Zulagen von Kinderbetreuungsanbieter zu Kinderbetreuungsanbieter variieren können. Sie sind über die Gehaltsstufe des jeweiligen Anbieters an diesen gebunden. So erhält <em>Frau Marie Jouveinal,</em> die der Gehaltsstufe 2 (Tabelle „EMPLOYEES“) angehört, einen Stundenlohn von 2,1 Euro (Tabelle „INDEMNITES“).</p>
+<p>Die Beziehungen zwischen den drei Tabellen sind wie folgt:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000025F0000019D9AFFDD0F.png" width="304" height="207" style="display:inline-block; margin:4px;width:8.031cm;height:5.465cm;" class="odt-zoomable" data-zoom-src="images/100000000000025F0000019D9AFFDD0F.png" /></td></tr></table>
+
+<p>Es besteht eine Fremdschlüsselbeziehung zwischen der Spalte EMPLOYEES(INDEX) und der Spalte ALLOWANCES(INDEX).</p>
+<p>Die auf diese Weise erstellte Datenbank [dbpam] generiert zwei Dateien im Ordner „SQL Server Express“:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000004B5000001489DF09928.png" width="603" height="164" style="display:inline-block; margin:4px;width:15.942cm;height:4.339cm;" class="odt-zoomable" data-zoom-src="images/10000000000004B5000001489DF09928.png" /></td></tr></table>
+
+<p><a id="attachsqlserver"></a>Die Dateien [dbpam.mdf, dbpam_log.ldf] können auf einen anderen Rechner übertragen und dort wieder in das SQL Server Express-Datenbankmanagementsystem eingebunden werden. So geht’s:</p>
+<ul>
+  <li>Die [dbpam]-Datenbankdateien werden in einen Ordner kopiert
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000014300000064013168B4.png" width="259" height="80" style="display:inline-block; margin:4px;width:6.84cm;height:2.118cm;" class="odt-zoomable" data-zoom-src="images/100000000000014300000064013168B4.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+  <li>Starten Sie SQL Server Express
+  </li>
+  <li>Fügen Sie mithilfe des SQL Server Management Studio Express-Clients die Datei [dbpam.mdf] zur Datenbank hinzu:
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005D300000237840989AF.png" width="680" height="259" style="display:inline-block; margin:4px;width:17.997cm;height:6.844cm;" class="odt-zoomable" data-zoom-src="images/10000000000005D300000237840989AF.png" /></td></tr></table>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005BB00000241AD2AB5A6.png" width="680" height="268" style="display:inline-block; margin:4px;width:17.997cm;height:7.078cm;" class="odt-zoomable" data-zoom-src="images/10000000000005BB00000241AD2AB5A6.png" /></td></tr></table>
+
+<ol>
+  <li>Klicken Sie mit der rechten Maustaste auf [Datenbanken] / Anfügen
+  </li>
+  <li>Wählen Sie die Datei [dbpam.mdf] über die Schaltfläche [Hinzufügen] (nicht abgebildet) aus
+  </li>
+  <li>Die angehängte Datei erstellt eine Datenbank, die noch nicht vorhanden sein darf. Hier haben wir im Feld [Anhängen als] die neue Datenbank [dbpam2] benannt.
+  </li>
+  <li>Sie können die neue Datenbank und ihre Tabellen sehen
+  </li>
+</ol>
+
+<p>Diese Methode zum Anfügen einer Datenbank ist nützlich, um eine Datenbank von einem Computer auf einen anderen zu übertragen, und wir werden sie hier gelegentlich verwenden.</p>
+<p><a id="reglesmetier"></a>
+<a id="calculsalaire"></a></p>
+<h2 id="32-berechnungsmethode-fur-das-gehalt-einer-tagesmutter">3.2. <span style="color: #4f81bd"><strong><span style="color: #4f81bd"> Berechnungsmethode für das Gehalt einer Tagesmutter</span></strong></span></h2>
+<p>Wir stellen nun die Methode zur Berechnung des Monatsgehalts einer Tagesmutter vor. Als Beispiel nehmen wir das Gehalt von Frau Marie Jouveinal, die während des Abrechnungszeitraums 150 Stunden an 20 Tagen gearbeitet hat.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Folgende Faktoren werden berücksichtigt:</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">[<span style="background-color:#ffcc99">TOTALHOURS</span>]: Gesamtzahl</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> im</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> Monat</span></span>
+</code></pre></div>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">[<span style="background-color:#ffcc99">TOTALDAYS</span>]: Gesamtzahl der</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> im Monat</span></span>
+</code></pre></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>[TOTALHOURS]=150
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>[TOTALDAYS] = 20
+</code></pre></div>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Das Grundgehalt der Kinderbetreuungskraft wird anhand der folgenden Formel berechnet:</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[BASISGEHALT]=([GESAMTSTUNDEN]*
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>[STUNDENSATZ])*(1+
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>[CPALLOWANCE]/100)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>[BASESALARY]=(150*[2,1])*(1+0,15)= 362,25
+</code></pre></div>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Von diesem Grundgehalt müssen verschiedene Sozialversicherungsbeiträge abgezogen werden:</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">Allgemeiner Sozialbeitrag</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> sowie Schulden</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> zur Schuldentilgung</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> : <span style="background-color:#ffcc99">[BASESALARY]*[CSGRDS/100]</span></span></span>
+</code></pre></div>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">Selbstbehalt</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> Selbstbehalt:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> <span style="background-color:#ffcc99">[BASESALARY]*[CSGD/100]</span></span></span>
+</code></pre></div>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">Sozialversicherung, Witwenrente,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> Altersversicherung:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> <span style="background-color:#ffcc99">[BASESALARY]*[SECU/100]</span></span></span>
+</code></pre></div>
+<div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Zusatzrente +
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>AGPF + Arbeitslosenversicherung:
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>[GRUNDGEHALT]*[RENTE/100]
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>CSGRDS: 12,64
+</code></pre></div>
+</div>
+<div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>CSGD: 22,28
+</code></pre></div>
+</div>
+<div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Sozialversicherung: 34,02
+</code></pre></div>
+</div>
+<div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Rente: 28,55
+</code></pre></div>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Gesamtsumme der Sozialversicherungsbeiträge:</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>[SOCIALCONTRIBUTIONS] = [SALARY
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>EBASE]*(CSGRDS+CSGD+SECU+RETR
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>[SOCIALCONTRIBUTIONS]=97,48
+</code></pre></div>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Darüber hinaus hat die Kinderbetreuerin Anspruch auf eine Tagegeldzulage und eine Verpflegungszulage für jeden Arbeitstag. Somit erhält sie folgende Zulagen:</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>[Vergütung] = [TOTAL_DAYS] * (EN
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>TAGESZULAGE + TÄGLICHE VERPFLEGUNGSZULAGE)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>[ZULAGEN]=104
+</code></pre></div>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Letztendlich ergibt sich folgender Nettolohn, der an die Tagesmutter zu zahlen ist:</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>[GRUNDGEHALT]-
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>[SOZIALVERSICHERUNGSBEITRÄGE]+
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>[ZULAGEN]
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>[NETTOGEHALT]=368,77
+</code></pre></div>
+</div></td></tr></table>
+
+<p><a id="refheadingtoc744694255346799"></a></p>
+<h2 id="33-adonet-hinweise">3.3. <span style="color: #4f81bd">ADO.NET-Hinweise</span></h2>
+<p>Die Anwendung zur Lohn- und Gehaltsabrechnung benötigt Informationen aus der Datenbank [dbpam]. Ihre Architektur sieht wie folgt aus:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000054C0000016F17902B39.png" width="678" height="183" style="display:inline-block; margin:4px;width:17.939cm;height:4.854cm;" class="odt-zoomable" data-zoom-src="images/100000000000054C0000016F17902B39.png" /></td></tr></table>
+
+<ul>
+  <li>In [1] stellt der Benutzer eine Anfrage
+  </li>
+  <li>In [2] verarbeitet die Lohnabrechnungsanwendung diese Anfrage.
+  </li>
+  <li>Möglicherweise benötigt sie dann Daten aus der Datenbank. Daraufhin sendet sie eine Abfrage an den ADO.NET-Anbieter des verwendeten DBMS [4].
+  </li>
+  <li>Der Anbieter greift auf die Datenbank [5] zu und gibt die Ergebnisse an den ADO.NET-Anbieter zurück, der sie wiederum an die Anwendung weiterleitet
+  </li>
+  <li>Die Anwendung verarbeitet diese Ergebnisse und generiert eine Antwort [5] für den Benutzer
+  </li>
+</ul>
+
+<p>Wir werden nun die wichtigsten Schnittstellen betrachten, die ein ADO.NET-Anbieter seinen Clients zur Verfügung stellt [3].</p>
+<p>Im <strong>verbundenen</strong> Modus führt die Anwendung folgende Schritte aus:</p>
+<ol>
+  <li>eine Verbindung zur Datenquelle
+  </li>
+  <li>arbeitet mit der Datenquelle im Lese-/Schreibmodus
+  </li>
+  <li>schließt die Verbindung
+  </li>
+</ol>
+
+<p>An diesen Vorgängen sind in erster Linie drei ADO.NET-Schnittstellen beteiligt:</p>
+<ul>
+  <li><b>IDbConnection, </b>das die Eigenschaften und Methoden der Verbindung kapselt.
+  </li>
+  <li><b>IDbCommand, </b>das die Eigenschaften und Methoden des ausgeführten SQL-Befehls kapselt.
+  </li>
+  <li><b>IDataReader, </b>das die Eigenschaften und Methoden des Ergebnisses einer SQL-SELECT-Anweisung kapselt.
+  </li>
+</ul>
+
+<p><u><strong>Die IDbConnection-Schnittstelle</strong></u></p>
+<p>dient zur Verwaltung der Verbindung zur Datenbank. Zu den Methoden (<strong>M)</strong> und Eigenschaften (<strong>P)</strong> dieser Schnittstelle gehören die folgenden:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Name</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Typ</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Rolle</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ConnectionString
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Datenbankverbindungszeichenfolge</b>. Sie gibt alle Parameter an, die zum Herstellen einer Verbindung mit einer bestimmten Datenbank erforderlich sind.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Öffnen
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Öffnet die Verbindung zu der durch <i>ConnectionString</i> definierten Datenbank</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Schließen
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Schließt die Verbindung</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>BeginTransaction
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Startet eine Transaktion.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Status
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Verbindungsstatus: <i>ConnectionState.Closed</i>, <i> ConnectionState.Open</i>, <i> ConnectionState.Connecting</i>, <i> ConnectionState.Executing</i>, <i> ConnectionState.Fetching</i>, <i> ConnectionState.Broken</i></div></td></tr></table>
+
+<p>Wenn <em>„Connection“</em> eine Klasse ist, die die Schnittstelle <em>„IDbConnection“</em> implementiert, kann die Verbindung wie folgt geöffnet werden:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a>IDbConnection connexion=new Connection();
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>connexion.ConnectionString=...;
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>connexion.Open();
+</code></pre></div></td></tr></table></div>
+<p><u><strong>Die IDbCommand-Schnittstelle</strong></u></p>
+<p>dient zur Ausführung einer SQL-Anweisung oder einer gespeicherten Prozedur. Zu den Methoden <strong>M</strong> und Eigenschaften <strong>P</strong> dieser Schnittstelle gehören die folgenden:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Name</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Typ</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Rolle</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>Befehlstyp
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">gibt an, was ausgeführt werden soll –  bezieht seine Werte aus einer Aufzählung:</div><div style="margin:0 0 0.5em 0">- <i>CommandType.Text</i>: Führt die in der <i>CommandText</i>-Eigenschaft definierte SQL-Anweisung aus. Dies ist der Standardwert.</div><div style="margin:0 0 0.5em 0">- <i>CommandType.StoredProcedure</i>: Führt eine gespeicherte Prozedur in der Datenbank aus</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>CommandText
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">- der Text der auszuführenden SQL-Anweisung, wenn CommandType= <i>CommandType.Text</i></div><div style="margin:0 0 0.5em 0">- der Name der auszuführenden gespeicherten Prozedur, wenn CommandType= <i>CommandType.StoredProcedure</i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Verbindung
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">die <i>IDbConnection</i>-Verbindung, die zur Ausführung der SQL-Anweisung verwendet werden soll</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>Transaktion
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">die <i>IDbTransaction</i>-Transaktion, in der die SQL-Anweisung ausgeführt werden soll</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>Parameter
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Die Liste der Parameter für eine parametrisierte SQL-Anweisung. Die Anweisung `<i>update articles set price=price*1.1 where id=@id` </i>enthält den Parameter `@id`.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>ExecuteReader
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Zum Ausführen einer SELECT-SQL-Anweisung. Dies gibt ein IDataReader-Objekt zurück, das das Ergebnis der <i>SELECT-Anweisung </i>darstellt.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ExecuteNonQuery
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">zum Ausführen einer SQL-Anweisung vom Typ <i>„Update“, „Insert“ oder „Delete</i>“. Die Anzahl der von der Operation betroffenen Zeilen (aktualisiert, eingefügt oder gelöscht) wird zurückgegeben.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>ExecuteScalar
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">zum Ausführen einer SQL-Select-Anweisung, die ein einzelnes Ergebnis zurückgibt, z. B.: <i>select count(*) from articles</i>.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>CreateParameter
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">zum Erstellen der <i>IDbParameter</i>-Parameter einer parametrisierten SQL-Anweisung.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>Prepare
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ermöglicht es Ihnen, die Ausführung einer parametrisierten Abfrage zu optimieren, wenn diese mehrfach mit unterschiedlichen Parametern ausgeführt wird.</div></td></tr></table>
+
+<p>Wenn <em>„Command“</em> eine Klasse ist, die die Schnittstelle <em>„IDbCommand“</em> implementiert, sieht die Ausführung einer SQL-Anweisung ohne Transaktion wie folgt aus:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-42-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-42-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-42-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-42-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-42-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-42-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-42-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-42-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-42-10">10</a></span>
+<span class="normal"><a href="#__codelineno-42-11">11</a></span>
+<span class="normal"><a href="#__codelineno-42-12">12</a></span>
+<span class="normal"><a href="#__codelineno-42-13">13</a></span>
+<span class="normal"><a href="#__codelineno-42-14">14</a></span>
+<span class="normal"><a href="#__codelineno-42-15">15</a></span>
+<span class="normal"><a href="#__codelineno-42-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="o">//</span><span class="w"> </span><span class="n">ouverture</span><span class="w"> </span><span class="n">connexion</span><span class="w"> </span>
+<a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="n">IDbConnection</span><span class="w"> </span><span class="n">connexion</span><span class="o">=</span><span class="p">...</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3"></a><span class="n">connexion</span><span class="p">.</span><span class="k">Open</span><span class="p">();</span>
+<a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="o">//</span><span class="w"> </span><span class="n">préparation</span><span class="w"> </span><span class="n">commande</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="n">IDbCommand</span><span class="w"> </span><span class="n">commande</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">Command</span><span class="p">();</span>
+<a id="__codelineno-42-6" name="__codelineno-42-6"></a><span class="n">commande</span><span class="p">.</span><span class="k">Connection</span><span class="o">=</span><span class="n">connexion</span><span class="p">;</span>
+<a id="__codelineno-42-7" name="__codelineno-42-7"></a><span class="o">//</span><span class="w"> </span><span class="n">exécution</span><span class="w"> </span><span class="n">ordre</span><span class="w"> </span><span class="k">select</span>
+<a id="__codelineno-42-8" name="__codelineno-42-8"></a><span class="n">commande</span><span class="p">.</span><span class="n">CommandText</span><span class="o">=</span><span class="ss">&quot;select ...&quot;</span><span class="p">;</span>
+<a id="__codelineno-42-9" name="__codelineno-42-9"></a><span class="n">IDbDataReader</span><span class="w"> </span><span class="n">reader</span><span class="o">=</span><span class="n">commande</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span>
+<a id="__codelineno-42-10" name="__codelineno-42-10"></a><span class="p">...</span>
+<a id="__codelineno-42-11" name="__codelineno-42-11"></a><span class="o">//</span><span class="w"> </span><span class="n">exécution</span><span class="w"> </span><span class="n">ordre</span><span class="w"> </span><span class="k">update</span><span class="p">,</span><span class="w"> </span><span class="k">insert</span><span class="p">,</span><span class="w"> </span><span class="k">delete</span>
+<a id="__codelineno-42-12" name="__codelineno-42-12"></a><span class="n">commande</span><span class="p">.</span><span class="n">CommandText</span><span class="o">=</span><span class="ss">&quot;insert ...&quot;</span><span class="p">;</span>
+<a id="__codelineno-42-13" name="__codelineno-42-13"></a><span class="nb">int</span><span class="w"> </span><span class="n">nbLignesInsérées</span><span class="o">=</span><span class="n">commande</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span>
+<a id="__codelineno-42-14" name="__codelineno-42-14"></a><span class="p">...</span>
+<a id="__codelineno-42-15" name="__codelineno-42-15"></a><span class="o">//</span><span class="w"> </span><span class="n">fermeture</span><span class="w"> </span><span class="n">connexion</span>
+<a id="__codelineno-42-16" name="__codelineno-42-16"></a><span class="n">connexion</span><span class="p">.</span><span class="k">Close</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+<p><u><strong>Die IDataReader-Schnittstelle</strong></u></p>
+<p>Wird verwendet, um die Ergebnisse einer SQL-Select-Anweisung zu kapseln. Ein IDataReader-Objekt stellt eine Tabelle mit Zeilen und Spalten dar, die nacheinander verarbeitet werden: zuerst die erste Zeile, dann die zweite und so weiter. Zu den Methoden (<strong>M)</strong> und Eigenschaften (<strong>P)</strong> dieser Schnittstelle gehören die folgenden:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Name</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Typ</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Rolle</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>FieldCount
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Die Anzahl der Spalten in der <i>IDataReader</i>-Tabelle</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>GetName
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>GetName(i) </i>gibt den Namen der Spalte i in der IDataReader-Tabelle zurück.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>Element
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">P</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>Item[i] </i>steht für die Spaltennummer i der aktuellen Zeile in der IDataReader-Tabelle.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>Read
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Wechselt zur nächsten Zeile in der IDataReader-Tabelle. Gibt <i>True</i> zurück, wenn die Zeile erfolgreich gelesen wurde, andernfalls<i> False</i>.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>Schließen
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Schließt die <i>IDataReader</i>-Tabelle.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>GetBoolean
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>GetBoolean</i>(i): Gibt den booleschen Wert der Spalte i in der aktuellen Zeile der IDataReader-Tabelle zurück. Weitere ähnliche Methoden sind: <i>GetDateTime</i>, <i>GetDecimal</i>, <i>GetDouble</i>, <i>GetFloat</i>, <i>GetInt16</i>, <i>GetInt32</i>, <i>GetInt64</i>, <i>GetString</i>.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>Getvalue
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>Getvalue</i>(i): Gibt den Wert der Spalte i in der aktuellen Zeile der IDataReader-Tabelle als Objekttyp zurück.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>IsDBNull
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">M</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>IsDBNull(i) </i>gibt <i>„True“</i> zurück, wenn Spalte i der aktuellen Zeile in der IDataReader-Tabelle keinen Wert enthält, was durch den SQL-NULL-Wert dargestellt wird.</div></td></tr></table>
+
+<p>Die Verwendung eines <em>IDataReader</em>-Objekts sieht häufig wie folgt aus:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-51-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-51-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-51-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-51-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-51-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-51-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-51-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-51-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-51-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-51-10">10</a></span>
+<span class="normal"><a href="#__codelineno-51-11">11</a></span>
+<span class="normal"><a href="#__codelineno-51-12">12</a></span>
+<span class="normal"><a href="#__codelineno-51-13">13</a></span>
+<span class="normal"><a href="#__codelineno-51-14">14</a></span>
+<span class="normal"><a href="#__codelineno-51-15">15</a></span>
+<span class="normal"><a href="#__codelineno-51-16">16</a></span>
+<span class="normal"><a href="#__codelineno-51-17">17</a></span>
+<span class="normal"><a href="#__codelineno-51-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="o">//</span><span class="w"> </span><span class="n">ouverture</span><span class="w"> </span><span class="n">connexion</span><span class="w"> </span>
+<a id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="n">IDbConnection</span><span class="w"> </span><span class="n">connexion</span><span class="o">=</span><span class="p">...</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3"></a><span class="n">connexion</span><span class="p">.</span><span class="k">Open</span><span class="p">();</span>
+<a id="__codelineno-51-4" name="__codelineno-51-4"></a><span class="o">//</span><span class="w"> </span><span class="n">préparation</span><span class="w"> </span><span class="n">commande</span>
+<a id="__codelineno-51-5" name="__codelineno-51-5"></a><span class="n">IDbCommand</span><span class="w"> </span><span class="n">commande</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">Command</span><span class="p">();</span>
+<a id="__codelineno-51-6" name="__codelineno-51-6"></a><span class="n">commande</span><span class="p">.</span><span class="k">Connection</span><span class="o">=</span><span class="n">connexion</span><span class="p">;</span>
+<a id="__codelineno-51-7" name="__codelineno-51-7"></a><span class="o">//</span><span class="w"> </span><span class="n">exécution</span><span class="w"> </span><span class="n">ordre</span><span class="w"> </span><span class="k">select</span>
+<a id="__codelineno-51-8" name="__codelineno-51-8"></a><span class="n">commande</span><span class="p">.</span><span class="n">CommandText</span><span class="o">=</span><span class="ss">&quot;select ...&quot;</span><span class="p">;</span>
+<a id="__codelineno-51-9" name="__codelineno-51-9"></a><span class="n">IDataReader</span><span class="w"> </span><span class="n">reader</span><span class="o">=</span><span class="n">commande</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span>
+<a id="__codelineno-51-10" name="__codelineno-51-10"></a><span class="o">//</span><span class="w"> </span><span class="n">exploitation</span><span class="w"> </span><span class="n">résultats</span>
+<a id="__codelineno-51-11" name="__codelineno-51-11"></a><span class="n">while</span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="k">Read</span><span class="p">())</span><span class="err">{</span>
+<a id="__codelineno-51-12" name="__codelineno-51-12"></a><span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">exploiter</span><span class="w"> </span><span class="n">ligne</span><span class="w"> </span><span class="n">courante</span>
+<a id="__codelineno-51-13" name="__codelineno-51-13"></a><span class="w">        </span><span class="p">...</span>
+<a id="__codelineno-51-14" name="__codelineno-51-14"></a><span class="err">}</span>
+<a id="__codelineno-51-15" name="__codelineno-51-15"></a><span class="o">//</span><span class="w"> </span><span class="n">fermeture</span><span class="w"> </span><span class="n">reader</span>
+<a id="__codelineno-51-16" name="__codelineno-51-16"></a><span class="n">reader</span><span class="p">.</span><span class="k">Close</span><span class="p">();</span>
+<a id="__codelineno-51-17" name="__codelineno-51-17"></a><span class="o">//</span><span class="w"> </span><span class="n">fermeture</span><span class="w"> </span><span class="n">connexion</span>
+<a id="__codelineno-51-18" name="__codelineno-51-18"></a><span class="n">connexion</span><span class="p">.</span><span class="k">Close</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Dieses Tutorial, verfasst von <strong>Serge Tahé</strong>, wird der Öffentlichkeit unter den Bedingungen der
+<em>Creative Commons Namensnennung – Nicht kommerziell –
+Weitergabe unter gleichen Bedingungen 3.0 Unported</em> zur Verfügung gestellt.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
